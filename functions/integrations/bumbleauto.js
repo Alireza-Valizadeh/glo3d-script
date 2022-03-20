@@ -38,7 +38,11 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             url: 'https://us-central1-glo3d-c338b.cloudfunctions.net/vin',
             data: data,
-            dataType: 'json'
+            dataType: 'json',
+            error: function (request, status, error) {
+                console.error(`Glo3d Javascript Status: ${status}`);
+                console.error(`Glo3d Javascript Error: ${request.responseJSON.message}`)
+            }
         }).done(function (result) {
             if (!result.short_id) {
                 return

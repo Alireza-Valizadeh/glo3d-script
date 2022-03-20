@@ -42,16 +42,21 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             url: 'https://us-central1-glo3d-c338b.cloudfunctions.net/vin',
             data: data,
-            dataType: 'json'
+            dataType: 'json',
+            error: function (request, status, error) {
+                console.error(`Glo3d Javascript Status: ${status}`);
+                console.error(`Glo3d Javascript Error: ${request.responseJSON.message}`)
+            }
         }).done(function (result) {
-            if (!result.short_id) {
+            console.log("aResult", result);
+            if (!result.short_id || result.privacy === "private") {
                 return
             }
             aspectRatio = result.iFrameRatio
             addGloModal(result.short_id, "100%", "340px")
             // add360Button()
             $('#product-images').html('<iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0px auto; background: url(&quot;https://360spin.glo3d.net/loader.gif&quot;) center center no-repeat; height: 784.138px;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + result.short_id + '?' + embedSettingParams + '" width="1137" height="720" frameborder="0" scrolling="no"></iframe>')
-        });
+        })
     }
 
     function add360Button() {
@@ -94,7 +99,10 @@ jQuery(document).ready(function ($) {
     }
 
     function setGloIframeHeight() {
-        document.getElementById('my-glo3d-iframe').style.height = (100 + document.getElementById('my-glo3d-iframe').offsetWidth / aspectRatio) + 'px'
+        if (document.getElementById('my-glo3d-iframe')) {
+            document.getElementById('my-glo3d-iframe').style.height = (100 + document.getElementById('my-glo3d-iframe').offsetWidth / aspectRatio) + 'px'
+        }
+        
     }
 
     window.addEventListener('resize', setGloIframeHeight)

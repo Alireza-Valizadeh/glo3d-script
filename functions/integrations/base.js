@@ -132,11 +132,8 @@ function addStyles() {
 
 
 function addjQuery() {
-    // Create the element
     var script = document.createElement("script");
-    // Add script content
     script.src = "https://code.jquery.com/jquery-3.5.1.min.js"
-// Append
     document.body.appendChild(script);
 }
 
