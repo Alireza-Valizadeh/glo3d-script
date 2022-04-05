@@ -14,7 +14,21 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.setAttribute("scrolling", "no");
     glo3dIFrame.setAttribute("allowfullscreen", "true");
     glo3dIFrame.setAttribute("loading", "lazy");
+    glo3dIFrame.setAttribute("width", "100%");
+    glo3dIFrame.setAttribute("height", "100%");
     $(".vdp-gallery").replaceWith(glo3dIFrame);
+    document.head.insertAdjacentHTML("beforeend", `
+    <style>
+      .vdp-gallery-wrap {
+        height: 550px;
+      }
+      @media (max-width: 400px) {
+        .vdp-gallery-wrap {
+          height: 300px;
+        }
+      }
+    </style>
+    `)
   }
 
   function findVin() {
