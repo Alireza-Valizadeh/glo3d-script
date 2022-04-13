@@ -47,18 +47,19 @@ exports.script = functions.https.onRequest(async (req, res) => {
     }
 
     let baseScript = fs.readFileSync("./integrations/base.js", "utf8");
+    const steveHahnSites = [
+      "stevehahnvw",
+      "stevehahnkia",
+      "stevehahnskia",
+      "stevehahnmercedesbenz",
+    ];
+    if (steveHahnSites.includes(site)) {
+      site = "stevehahn";
+    }
     if (fs.existsSync("./integrations/" + site + ".js")) {
       console.log(909, "./integrations/" + site + ".js");
       let myScript = fs.readFileSync("./integrations/" + site + ".js", "utf8");
-      let finalScript;
-      switch (site) {
-        case "aquascaperoom":
-        case "ahwan":
-          finalScript = myScript;
-          break;
-        default:
-          finalScript = baseScript + "\r\n" + myScript;
-      }
+      let finalScript = baseScript + "\r\n" + myScript;
       res.type(".js").status(200).send(finalScript);
     } else {
       res
@@ -68,4 +69,3 @@ exports.script = functions.https.onRequest(async (req, res) => {
     }
   });
 });
-
