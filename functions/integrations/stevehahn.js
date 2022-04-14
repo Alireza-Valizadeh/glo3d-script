@@ -8,26 +8,34 @@ jQuery(document).ready(function ($) {
     let glo3dIFrame = document.createElement("iframe");
     glo3dIFrame.setAttribute(
       "src",
-      `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true`
+      `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
     );
     glo3dIFrame.setAttribute("frameborder", "0");
     glo3dIFrame.setAttribute("scrolling", "no");
     glo3dIFrame.setAttribute("allowfullscreen", "true");
     glo3dIFrame.setAttribute("loading", "lazy");
     glo3dIFrame.setAttribute("width", "100%");
-    glo3dIFrame.setAttribute("height", "100%");
-    $(".vdp-gallery").replaceWith(glo3dIFrame);
+    glo3dIFrame.setAttribute("height", "100%"); 
+    glo3dIFrame.setAttribute("style", "min-height: 400px;"); 
+    glo3dIFrame.classList.add("glo3d-iframe-height");
+    $(".mod-vehicle-gallery").replaceWith(glo3dIFrame);
     document.head.insertAdjacentHTML("beforeend", `
     <style>
-      .mod-vehicle-gallery {
+      .glo3d-iframe-height {
         height: 550px;
+        min-height: 400px;
+      }
+      @media (max-width: 400px) {
+        .glo3d-iframe-height {
+          height: 300px;
+        }
       }
     </style>
     `)
   }
 
   function findVin() {
-    var vin = $('strong:contains("VIN #:"').parent().next().textContent;
+    var vin = $(`strong:contains("VIN ")`)[0].parentNode.nextSibling.nextSibling.innerHTML;
     console.log("vin", vin);
     if (vin) {
       try {
