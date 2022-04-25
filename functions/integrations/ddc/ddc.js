@@ -13,7 +13,7 @@
           console.log("loaded document succesfully");
           const photosElem = document.querySelector("#photos");
           console.log("photosElem", photosElem);
-          getModelDataFromGlo3D("1V2MR2CA9KC524271");
+          getModelDataFromGlo3D(ev.payload.vin);
           function replaceDefaultImage(shortId) {
             console.log("shortId", shortId);
             let glo3dIFrame = document.createElement("iframe");
