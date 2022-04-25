@@ -4,6 +4,13 @@
   API.loadJS(
     "https://cdn.jsdelivr.net/gh/alireza-valizadeh/glo3d-script@2cfa0cfac24e0c7ad4bacdc118731fde99911c1f/functions/integrations/base.js"
   ).then(() => {
+    (async APILoader => {
+      const API = await APILoader.create("glo3d");
+      API.subscribe('vehicle-shown-v1', ev => {
+        API.log("ev", ev);
+        API.log("event.vin", ev.vin);
+      });
+    })(window.DDC.APILoader);
     jQuery(document).ready(function ($) {
       console.log("loaded document succesfully");
       const photosElem = document.querySelector("#photos");
