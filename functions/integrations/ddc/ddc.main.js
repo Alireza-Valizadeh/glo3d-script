@@ -13,12 +13,16 @@
         dataType: "json",
         error: function (request, status, error) {
           console.error(`Glo3D Javascript Status: ${status}`);
+          // possible errors are due to:
+          // 1) models have not been captured in Glo3D yet.
+          // 2) unexpected server errors.
           console.error(
             `Glo3D Javascript Error: ${request.responseJSON.message}`
           );
         },
       }).done(function (result) {
         console.log("Glo3D Result", result);
+        // Do not replace private models.
         if (!result.short_id || result.privacy === "private") {
           return;
         }
@@ -27,6 +31,7 @@
           const glo3dIFrame = document.createElement("iframe");
           glo3dIFrame.style =
             "background-color: #fff; height: 550px; min-height: 400px;";
+          // adding user specified settings to the iFrame
           glo3dIFrame.setAttribute(
             "src",
             `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
