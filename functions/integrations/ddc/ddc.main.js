@@ -5,7 +5,7 @@
       const vinNumber = ev.payload.vin;
       let shortId = "";
       console.log("vinNumber", vinNumber);
-      var data = { vinNumber: vinNumber, height: "400" };
+      var data = { vin_number: vinNumber, height: "400" };
       $.ajax({
         type: "POST",
         url: "https://us-central1-glo3d-c338b.cloudfunctions.net/vin",
