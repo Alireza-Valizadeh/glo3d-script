@@ -23,22 +23,22 @@
           return;
         }
         shortId = result.short_id;
-      });
-      API.insert("vehicle-media-container", (elem, meta) => {
-        const glo3dIFrame = document.createElement("iframe");
-        glo3dIFrame.style =
-          "background-color: #fff; height: 550px; min-height: 400px;";
-        glo3dIFrame.setAttribute(
-          "src",
-          `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
-        );
-        glo3dIFrame.setAttribute("frameborder", "0");
-        glo3dIFrame.setAttribute("scrolling", "no");
-        glo3dIFrame.setAttribute("allowfullscreen", "true");
-        glo3dIFrame.setAttribute("loading", "lazy");
-        glo3dIFrame.setAttribute("width", "100%");
-        glo3dIFrame.setAttribute("height", "100%");
-        API.append(elem, glo3dIFrame);
+        API.insert("vehicle-media-container", (elem, meta) => {
+          const glo3dIFrame = document.createElement("iframe");
+          glo3dIFrame.style =
+            "background-color: #fff; height: 550px; min-height: 400px;";
+          glo3dIFrame.setAttribute(
+            "src",
+            `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
+          );
+          glo3dIFrame.setAttribute("frameborder", "0");
+          glo3dIFrame.setAttribute("scrolling", "no");
+          glo3dIFrame.setAttribute("allowfullscreen", "true");
+          glo3dIFrame.setAttribute("loading", "lazy");
+          glo3dIFrame.setAttribute("width", "100%");
+          glo3dIFrame.setAttribute("height", "100%");
+          API.append(elem, glo3dIFrame);
+        });
       });
     }
   });
