@@ -18,8 +18,8 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.setAttribute("height", "100%"); 
     glo3dIFrame.setAttribute("style", "min-height: 400px;"); 
     glo3dIFrame.classList.add("glo3d-iframe-height");
-    $(".carousel").replaceWith(glo3dIFrame);
-    $(".carousel__controls").remove();
+    const child = document.querySelector("#DWS_VDP_Media_5");
+    child.replaceWith(glo3dIFrame);
     document.head.insertAdjacentHTML("beforeend", `
     <style>
       .glo3d-iframe-height {
@@ -36,10 +36,8 @@ jQuery(document).ready(function ($) {
   }
 
   function findVin() {
-    var vin = $(`li:contains("VIN: ")`)[0].innerHTML;
+    var vin = $(`span:contains("VIN")`)[0].nextElementSibling.innerText;
     console.log("vin", vin);
-    vin = vin.split(" ")[1];
-    console.log("vin2", vin);
     if (vin) {
       try {
         if (validateVin(vin)) {
