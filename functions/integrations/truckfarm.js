@@ -6,6 +6,8 @@ jQuery(document).ready(function ($) {
 
   function replaceDefaultImage(shortId) {
     let glo3dIFrame = document.createElement("iframe");
+    const wrapper = document.createElement("div");
+    wrapper.setAttribute("id", "glo3d-iframe-wrapper");
     glo3dIFrame.setAttribute(
       "src",
       `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
@@ -15,16 +17,27 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.setAttribute("allowfullscreen", "true");
     glo3dIFrame.setAttribute("loading", "lazy");
     glo3dIFrame.setAttribute("width", "100%");
-    glo3dIFrame.setAttribute("height", "100%"); 
-    glo3dIFrame.setAttribute("style", "min-height: 400px;"); 
+    glo3dIFrame.setAttribute("height", "100%");
+    glo3dIFrame.setAttribute("style", "min-height: 400px;");
     glo3dIFrame.classList.add("glo3d-iframe-height");
-    $(".carousel").replaceWith(glo3dIFrame);
+    glo3dIFrame.setAttribute("id", "glo3d-iframe-content");
+    wrapper.appendChild(glo3dIFrame);
+    $(".carousel").replaceWith(wrapper);
     $(".carousel__controls").remove();
-    document.head.insertAdjacentHTML("beforeend", `
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      `
     <style>
+      #glo3d-iframe-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
       .glo3d-iframe-height {
         height: 550px;
         min-height: 400px;
+        max-width: 800px;
       }
       @media (max-width: 400px) {
         .glo3d-iframe-height {
@@ -32,7 +45,8 @@ jQuery(document).ready(function ($) {
         }
       }
     </style>
-    `)
+    `
+    );
   }
 
   function findVin() {
