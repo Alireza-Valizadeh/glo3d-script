@@ -22,7 +22,12 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.classList.add("glo3d-iframe-height");
     glo3dIFrame.setAttribute("id", "glo3d-iframe-content");
     wrapper.appendChild(glo3dIFrame);
-    $(".dws-vdp-media-not-available").replaceWith(wrapper);
+    try {
+      $(".dws-vdp-media-not-available").replaceWith(wrapper);
+    } catch (error) {}
+    try {
+      $(".dws-vdp-media-slider").replaceWith(wrapper);
+    } catch (error) {}
     document.head.insertAdjacentHTML(
       "beforeend",
       `
