@@ -220,7 +220,7 @@ jQuery(document).ready(function ($) {
 
   function replaceDefaultImage(shortId) {
     let glo3dIFrame = document.createElement("iframe");
-    glo3dIFrame.setAttribute("src", `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true`);
+    glo3dIFrame.setAttribute("src", `https://glo3d.net/iFrame/${shortId}?amp;autoRotate=true`);
     glo3dIFrame.setAttribute("frameborder", "0");
     glo3dIFrame.setAttribute("scrolling", "no");
     glo3dIFrame.setAttribute("allowfullscreen", "true");
@@ -240,7 +240,7 @@ jQuery(document).ready(function ($) {
         height +
         '; background: url(https://360spin.glo3d.net/loader.gif) center center no-repeat;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' +
         shortId +
-        '?autoLoad=true&amp;autoRotate=true" frameborder="0" scrolling="no"></iframe>\n' +
+        '?amp;autoRotate=true" frameborder="0" scrolling="no"></iframe>\n' +
         "                </div>\n" +
         "                </div>"
     );

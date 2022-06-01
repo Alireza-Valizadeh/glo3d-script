@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
     let glo3dIFrame = document.createElement("iframe");
     glo3dIFrame.setAttribute(
       "src",
-      `https://glo3d.net/iFrame/${shortId}?autoLoad=true&amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
+      `https://glo3d.net/iFrame/${shortId}?amp;autoRotate=true&footerGallery=true&condition=true&interior=true&themebgcolor=0x0x0&themetextcolor=white&galleryPositin=Bottom`
     );
     glo3dIFrame.setAttribute("frameborder", "0");
     glo3dIFrame.setAttribute("scrolling", "no");

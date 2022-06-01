@@ -57,7 +57,7 @@ let myInterval = setInterval(() => {
                     aspectRatio = result.iFrameRatio
                     addGloModal(result.short_id, "100%", "340px")
                     add360Button()
-                    $(document).xpathEvaluate('/html/body/div/div/div[3]/div/main/div/div/div/div[2]/div/div/div/div[1]').html('<iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0px auto; background: url(&quot;https://360spin.glo3d.net/loader.gif&quot;) center center no-repeat; height: 650px;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + result.short_id + '?autoLoad=true&amp;autoRotate=true" width="800" height="650" frameborder="0" scrolling="no"></iframe>')
+                    $(document).xpathEvaluate('/html/body/div/div/div[3]/div/main/div/div/div/div[2]/div/div/div/div[1]').html('<iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0px auto; background: url(&quot;https://360spin.glo3d.net/loader.gif&quot;) center center no-repeat; height: 650px;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + result.short_id + '?amp;autoRotate=true" width="800" height="650" frameborder="0" scrolling="no"></iframe>')
                 });
             }
         
@@ -70,7 +70,7 @@ let myInterval = setInterval(() => {
                     '                <!-- Modal content -->\n' +
                     '            <div class="modal-content-glo3d">\n' +
                     '                <span class="close-glo">×</span>\n' +
-                    '                <iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0 auto; width: ' + width + '; height: ' + height + '; background: url(https://360spin.glo3d.net/loader.gif) center center no-repeat;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + shortId + '?autoLoad=true&amp;autoRotate=true&amp;galleryFooter=true" frameborder="0" scrolling="no"></iframe>\n' +
+                    '                <iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0 auto; width: ' + width + '; height: ' + height + '; background: url(https://360spin.glo3d.net/loader.gif) center center no-repeat;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + shortId + '?amp;autoRotate=true&amp;galleryFooter=true" frameborder="0" scrolling="no"></iframe>\n' +
                     '                </div>\n' +
                     '                </div>')
             }

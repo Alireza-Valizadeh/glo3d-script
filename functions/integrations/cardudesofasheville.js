@@ -74,7 +74,7 @@ jQuery(document).ready(function ($) {
             '                <!-- Modal content -->\n' +
             '            <div class="modal-content-glo3d">\n' +
             '                <span class="close-glo">×</span>\n' +
-            '                <iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0 auto; width: ' + width + '; height: ' + height + '; background: url(https://360spin.glo3d.net/loader.gif) center center no-repeat;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + shortId + '?autoLoad=true&amp;autoRotate=true" frameborder="0" scrolling="no"></iframe>\n' +
+            '                <iframe allowfullscreen="true" loading="lazy" style="display: block; margin: 0 auto; width: ' + width + '; height: ' + height + '; background: url(https://360spin.glo3d.net/loader.gif) center center no-repeat;" id="my-glo3d-iframe" src="https://glo3d.net/iFrame/' + shortId + '?amp;autoRotate=true" frameborder="0" scrolling="no"></iframe>\n' +
             '                </div>\n' +
             '                </div>')
     }
