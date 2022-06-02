@@ -39,9 +39,9 @@ jQuery(document).ready(function ($) {
         height: 100%;
       }
       .glo3d-iframe-height {
-        height: 550px;
+        height: 500px;
         min-height: 400px;
-        max-width: 800px;
+        max-width: 600px;
       }
       @media (max-width: 400px) {
         .glo3d-iframe-height {
