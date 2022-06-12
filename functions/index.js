@@ -60,6 +60,9 @@ exports.script = functions.https.onRequest(async (req, res) => {
     if (bobSites.includes(site)) {
       site = "abqvwmazda";
     }
+    if (site === "tubmanchev" && req.query.vlp === "t") {
+      site = "tubmanchev-vlp";
+    }
     if (fs.existsSync("./integrations/" + site + ".js")) {
       console.log(909, "./integrations/" + site + ".js");
       let myScript = fs.readFileSync("./integrations/" + site + ".js", "utf8");
