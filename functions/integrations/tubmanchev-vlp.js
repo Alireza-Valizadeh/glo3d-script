@@ -1,58 +1,3 @@
-window.onload = function () {
-  if (window.jQuery) {
-    addStyles();
-  }
-};
-function addStyles() {
-  document.head.insertAdjacentHTML(
-    "beforeend",
-    "<style>" +
-      "        .myModalGlo3d  {\n" +
-      "          display:flex;  \n" +
-      "          position:fixed;  \n" +
-      "          margin:0 auto ; \n" +
-      "          width:100vw ; \n" +
-      "          height:100vh;  \n" +
-      "          justify-content:center;  \n" +
-      "          top:0;  \n" +
-      "          z-index:10000 ; \n" +
-      "        }\n" +
-      "        .close-iframe  {\n" +
-      "          display:flex;  \n" +
-      "          position:fixed;  \n" +
-      "          margin:3vh auto ; \n" +
-      "          width:98vw ; \n" +
-      "          left:77vw ; \n" +
-      "          top:0;  \n" +
-      "          z-index:10000 ; \n" +
-      "        }\n" +
-      "        .iframe-window-dialog  {\n" +
-      "         background-color :white;  \n" +
-      "        }\n" +
-      "        @media (min-width: 1110.1px) {\n" +
-      "  .close-iframe {\n" +
-      "               left:82vw;\n" +
-      "            }\n" +
-      "            .iframe-window-dialog {\n" +
-      "               width:70vw;\n" +
-      "            }\n" +
-      "}\n" +
-      "        @media (max-width: 1110px) and (min-width:700.1px) {\n" +
-      "  .close-iframe {\n" +
-      "               left:94vw;\n" +
-      "            }\n" +
-      "            .iframe-window-dialog {\n" +
-      "               width:94vw;\n" +
-      "            }\n" +
-      "}\n" +
-      "        @media (min-width:300px) and (max-width: 700px)   {\n" +
-      "            .iframe-window-dialog {\n" +
-      "               width:100vw;\n" +
-      "            }\n" +
-      "}\n" +
-      "</style>"
-  );
-}
 function checkClick() {
   if ($(".btn-tertiary")[0].innerText === "Full Vehicle Details  ") {
     $(".learnMore__wrap").after(
@@ -106,6 +51,54 @@ function replaceDefaultImage(shortId) {
   glo3dIFrame.setAttribute("id", "glo3d-iframe-content");
   wrapper.appendChild(glo3dIFrame);
   $(".iframe-glo3d").replaceWith(wrapper);
+  document.head.insertAdjacentHTML(
+    "beforeend",
+    "<style>" +
+      "        .myModalGlo3d  {\n" +
+      "          display:flex;  \n" +
+      "          position:fixed;  \n" +
+      "          margin:0 auto ; \n" +
+      "          width:100vw ; \n" +
+      "          height:100vh;  \n" +
+      "          justify-content:center;  \n" +
+      "          top:0;  \n" +
+      "          z-index:10000 ; \n" +
+      "        }\n" +
+      "        .close-iframe  {\n" +
+      "          display:flex;  \n" +
+      "          position:fixed;  \n" +
+      "          margin:3vh auto ; \n" +
+      "          width:98vw ; \n" +
+      "          left:77vw ; \n" +
+      "          top:0;  \n" +
+      "          z-index:10000 ; \n" +
+      "        }\n" +
+      "        .iframe-window-dialog  {\n" +
+      "         background-color :white;  \n" +
+      "        }\n" +
+      "        @media (min-width: 1110.1px) {\n" +
+      "  .close-iframe {\n" +
+      "               left:82vw;\n" +
+      "            }\n" +
+      "            .iframe-window-dialog {\n" +
+      "               width:70vw;\n" +
+      "            }\n" +
+      "}\n" +
+      "        @media (max-width: 1110px) and (min-width:700.1px) {\n" +
+      "  .close-iframe {\n" +
+      "               left:94vw;\n" +
+      "            }\n" +
+      "            .iframe-window-dialog {\n" +
+      "               width:94vw;\n" +
+      "            }\n" +
+      "}\n" +
+      "        @media (min-width:300px) and (max-width: 700px)   {\n" +
+      "            .iframe-window-dialog {\n" +
+      "               width:100vw;\n" +
+      "            }\n" +
+      "}\n" +
+      "</style>"
+  );
   document.head.insertAdjacentHTML(
     "beforeend",
     `
