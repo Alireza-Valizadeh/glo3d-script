@@ -61,8 +61,7 @@ exports.script = functions.https.onRequest(async (req, res) => {
       site = "abqvwmazda";
     }
     if (site === "tubmanchev" && req.query.vlp === "t") {
-      // site = "tubmanchev-vlp";
-      site = "  ";
+      site = "tubmanchev-vlp";
     }
     if (fs.existsSync("./integrations/" + site + ".js")) {
       console.log(909, "./integrations/" + site + ".js");

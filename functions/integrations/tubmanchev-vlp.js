@@ -1,21 +1,31 @@
-function checkClick() {
-  if ($(".btn-tertiary")[0].innerText === "Full Vehicle Details  ") {
-    $(".learnMore__wrap").after(
-      '<div class="col mt-2 col-md-5 learnMore__wrap"><h2 class="vdp--secondary-title d-none">See 360 Image</h2><div class="text-center">' +
-        '<button id="viewIframe"  class="btn btn-tertiary btn-lg btn__learnMore stat-text-link w-100" onclick="checkModelExistance()"  >See 360 Image <svg class="icon svgicon-caret_next"><use xlink:href="#svgicon-caret_next"></use></svg> </button></div></div>'
-    );
-  }
+var Glo3dVin = "";
+function Glo3DVinExistance(x, counter) {
+  const interval = window.setInterval(() => {
+    if (findVin() !== "not_found") {
+      clearInterval(interval);
+    } else {
+      counter++;
+    }
+    if (counter >= 3) {
+      clearInterval(interval);
+    }
+  }, x);
 }
-checkClick();
-function checkModelExistance() {
-  var vin = findVin();
+function Glo3dCheckClick() {
+  $(".carbox__overlay__quickViewCTA").on("mouseup", function () {
+    $("#Glo3dAddedBtn").remove();
+    Glo3dVin = "";
+    console.log("Resetting Vin number");
+    Glo3DVinExistance(1000, 0);
+  });
 }
-function open360Image() {
+Glo3dCheckClick();
+function Glo3dOpen360Image() {
   const div1 = document.createElement("div");
   div1.classList.add("myModalGlo3d");
   const div2 = document.createElement("div");
   div2.classList.add("close-iframe");
-  div2.innerHTML = `<span onclick='closeDialog()'><svg class="icon svgicon-cancel-circle"><use xlink:href="#svgicon-cancel-circle"></use></svg></span>`;
+  div2.innerHTML = `<span onclick='Glo3dCloseDialog()'><svg class="icon svgicon-cancel-circle"><use xlink:href="#svgicon-cancel-circle"></use></svg></span>`;
   div1.innerHTML = `<span class='iframe-window-dialog' ><span class='iframe-glo3d'>last content</span></span>`;
   document.body.appendChild(div1);
   document.body.appendChild(div2);
@@ -24,14 +34,13 @@ function findVin() {
   var vin = $(`span:contains("VIN#:")`)[0].nextSibling.nextSibling.innerText;
   console.log("vin", vin);
   if (vin) {
-    getModelDataFromGlo3D(vin);
+    Glo3dGetModelData(vin);
     return vin;
   } else {
     return "not_found";
   }
-  return "";
 }
-function replaceDefaultImage(shortId) {
+function Glo3dReplaceDefaultImage(shortId) {
   let glo3dIFrame = document.createElement("iframe");
   const wrapper = document.createElement("div");
   wrapper.setAttribute("id", "glo3d-iframe-wrapper");
@@ -101,8 +110,7 @@ function replaceDefaultImage(shortId) {
   );
   document.head.insertAdjacentHTML(
     "beforeend",
-    `
-        <style>
+    ` <style>
           #glo3d-iframe-wrapper {
             display: flex;
             justify-content: center;
@@ -123,7 +131,8 @@ function replaceDefaultImage(shortId) {
         `
   );
 }
-function getModelDataFromGlo3D(vin_number) {
+var Glo3dShortId = "";
+function Glo3dGetModelData(vin_number) {
   var data = { vin_number: vin_number, height: "400" };
   $.ajax({
     type: "POST",
@@ -138,11 +147,22 @@ function getModelDataFromGlo3D(vin_number) {
     if (!result.short_id || result.privacy === "private") {
       return;
     }
-    open360Image();
-    replaceDefaultImage(result.short_id);
+
+    Glo3dShortId = result.short_id;
+    Glo3dAdd360Btn();
   });
 }
-function closeDialog() {
+function Glo3dAdd360Btn() {
+  $(".learnMore__wrap").after(
+    '<div class="col mt-2 col-md-5 learnMore__wrap" id="Glo3dAddedBtn"><h2 class="vdp--secondary-title d-none">See 360 Image</h2><div class="text-center">' +
+      '<button id="viewIframe"  class="btn btn-tertiary btn-lg btn__learnMore stat-text-link w-100" onclick="Glo3dOpenModel()"  >See 360 Image <svg class="icon svgicon-caret_next"><use xlink:href="#svgicon-caret_next"></use></svg> </button></div></div>'
+  );
+}
+function Glo3dOpenModel() {
+  Glo3dOpen360Image();
+  Glo3dReplaceDefaultImage(Glo3dShortId);
+}
+function Glo3dCloseDialog() {
   $(".myModalGlo3d").remove();
   $(".close-iframe").remove();
 }
