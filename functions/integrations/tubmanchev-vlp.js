@@ -173,8 +173,8 @@ function Glo3dGetModelData(vin_number) {
 }
 function Glo3dAdd360Btn() {
   $(".learnMore__wrap").after(
-    '<div class="col mt-2 col-md-5 learnMore__wrap" id="Glo3dAddedBtn"><h2 class="vdp--secondary-title d-none">See 360 Image</h2><div class="text-center">' +
-      '<button id="viewIframe"  class="btn btn-tertiary btn-lg btn__learnMore stat-text-link w-100" onclick="Glo3dOpenModel()"  >See 360 Image <svg class="icon svgicon-caret_next"><use xlink:href="#svgicon-caret_next"></use></svg> </button></div></div>'
+    '<div class="col mt-2 col-md-5 learnMore__wrap" id="Glo3dAddedBtn"><h2 class="vdp--secondary-title d-none">Click For Virtual Tour</h2><div class="text-center">' +
+      '<button id="viewIframe"  class="btn btn-tertiary btn-lg btn__learnMore stat-text-link w-100" onclick="Glo3dOpenModel()"  >Click For Virtual Tour <svg class="icon svgicon-caret_next"><use xlink:href="#svgicon-caret_next"></use></svg> </button></div></div>'
   );
 }
 function Glo3dOpenModel() {
