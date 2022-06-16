@@ -22,8 +22,8 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.classList.add("glo3d-iframe-height");
     glo3dIFrame.setAttribute("id", "glo3d-iframe-content");
     wrapper.appendChild(glo3dIFrame);
-    $(".carousel").replaceWith(wrapper);
-    $(".carousel__controls").remove();
+    $(".vc_custom_1582710024358").replaceWith(wrapper);
+
     document.head.insertAdjacentHTML(
       "beforeend",
       `
@@ -33,15 +33,17 @@ jQuery(document).ready(function ($) {
         justify-content: center;
         width: 100%;
         height: 100%;
+        background-color: #bbbbbb !important;
       }
       .glo3d-iframe-height {
         height: 550px;
         min-height: 400px;
-        max-width: 800px;
+        max-width: 675px;
       }
       @media (max-width: 400px) {
         .glo3d-iframe-height {
           height: 300px;
+          width: 350px;
         }
       }
     </style>
@@ -50,10 +52,8 @@ jQuery(document).ready(function ($) {
   }
 
   function findVin() {
-    var vin = $(`li:contains("VIN: ")`)[0].innerHTML;
+    var vin = $(`span:contains("VIN")`)[0].nextElementSibling.innerText.trim();
     console.log("vin", vin);
-    vin = vin.split(" ")[1];
-    console.log("vin2", vin);
     if (vin) {
       try {
         if (validateVin(vin)) {
