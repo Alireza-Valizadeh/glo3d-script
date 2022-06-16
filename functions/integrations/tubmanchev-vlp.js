@@ -25,7 +25,7 @@ function Glo3dOpen360Image() {
   div1.classList.add("myModalGlo3d");
   const div2 = document.createElement("div");
   div2.classList.add("close-iframe");
-  div2.innerHTML = `<span onclick='Glo3dCloseDialog()'><svg class="icon svgicon-cancel-circle"><use xlink:href="#svgicon-cancel-circle"></use></svg></span>`;
+  div2.innerHTML = `<span onclick='Glo3dCloseDialog()'><svg  class="glo3d-close-button icon svgicon-cancel-circle"><use xlink:href="#svgicon-cancel-circle"></use></svg></span>`;
   div1.innerHTML = `<span class='iframe-window-dialog' ><span class='iframe-glo3d'>last content</span></span>`;
   document.body.appendChild(div1);
   document.body.appendChild(div2);
@@ -83,7 +83,10 @@ function Glo3dReplaceDefaultImage(shortId) {
       "          z-index:10000 ; \n" +
       "        }\n" +
       "        .iframe-window-dialog  {\n" +
-      "         background-color :white;  \n" +
+      "         background-color :rgba(0, 0, 0, 0.65);  \n" +
+      "         display :flex;  \n" +
+      "         justify-content :center;  \n" +
+      "         align-items :center;  \n" +
       "        }\n" +
       "        @media (min-width: 1110.1px) {\n" +
       "  .close-iframe {\n" +
@@ -116,11 +119,24 @@ function Glo3dReplaceDefaultImage(shortId) {
             justify-content: center;
             width: 100%;
             height: 100%;
+            backdrop-filter: blur(1px);
           }
           .glo3d-iframe-height {
-            height: 550px;
+            height: 650px;
             min-height: 400px;
-            max-width: 800px;
+            max-width: 733px;
+          }
+          .glo3d-close-button {
+            color: rgba(255, 255, 255, 0.7);
+            transform: scale(2);
+            position: relative;
+            right: 60px;
+            transition: all 300ms ease-out;
+          }
+          .glo3d-close-button:hover {
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.98);
+            transform: scale(2.2);
           }
           @media (max-width: 400px) {
             .glo3d-iframe-height {
