@@ -93,7 +93,7 @@ function Glo3dReplaceDefaultImage(shortId) {
       "               left:82vw;\n" +
       "            }\n" +
       "            .iframe-window-dialog {\n" +
-      "               width:70vw;\n" +
+      "               width:100vw;\n" +
       "            }\n" +
       "}\n" +
       "        @media (max-width: 1110px) and (min-width:700.1px) {\n" +
@@ -101,7 +101,7 @@ function Glo3dReplaceDefaultImage(shortId) {
       "               left:94vw;\n" +
       "            }\n" +
       "            .iframe-window-dialog {\n" +
-      "               width:94vw;\n" +
+      "               width:100vw;\n" +
       "            }\n" +
       "}\n" +
       "        @media (min-width:300px) and (max-width: 700px)   {\n" +
@@ -120,6 +120,9 @@ function Glo3dReplaceDefaultImage(shortId) {
             width: 100%;
             height: 100%;
             backdrop-filter: blur(1px);
+            background: rgba(0,0,0, 0.5);
+            padding-top: 56px;
+            margin-right: 18px;
           }
           .glo3d-iframe-height {
             height: 650px;
