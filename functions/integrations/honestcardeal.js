@@ -23,6 +23,7 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.setAttribute("id", "glo3d-iframe-content");
     wrapper.appendChild(glo3dIFrame);
     $(".main-img-frame").replaceWith(wrapper);
+    $(".pure-img.main-img").replaceWith(wrapper);
     try {
       $(".img-list").remove();
       $(".expand-bar").remove();
@@ -58,11 +59,11 @@ jQuery(document).ready(function ($) {
     console.log("vin", vin);
     if (vin) {
       try {
-        if (validateVin(vin)) {
+        // if (validateVin(vin)) {
           return vin;
-        } else {
-          console.log("no valid vin");
-        }
+        // } else {
+          // console.log("no valid vin");
+        // }
       } catch (e) {
         console.log(e);
       }
