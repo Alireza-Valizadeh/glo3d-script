@@ -3,7 +3,23 @@ jQuery(document).ready(function ($) {
   if (vin !== "not_found") {
     getModelDataFromGlo3D(vin);
   }
+  var Glo3dPreviousUrl = "";
+  var observer = new MutationObserver(function (mutations) {
+    if (location.href !== Glo3dPreviousUrl) {
+      Glo3dPreviousUrl = location.href;
+      if (location.href.endsWith("inventory")) {
+        // console.log("ignoring listing page...");
+        return;
+      }
+      var vin = findVin();
+      if (vin !== "not_found") {
+        getModelDataFromGlo3D(vin);
+      }
+    }
+  });
 
+  const config = { subtree: true, childList: true };
+  observer.observe(document, config);
   function replaceDefaultImage(shortId) {
     let glo3dIFrame = document.createElement("iframe");
     const wrapper = document.createElement("div");
@@ -55,26 +71,15 @@ jQuery(document).ready(function ($) {
   }
 
   function findVin() {
-    var vin = $(`span:contains("VIN")`)[0].nextSibling.textContent;
+    var vin = "not_found";
+    try {
+      vin = $(`span:contains("VIN")`)[0].nextSibling.textContent;
+    } catch (error) {}
     console.log("vin", vin);
-    if (vin) {
-      try {
-        // if (validateVin(vin)) {
-          return vin;
-        // } else {
-          // console.log("no valid vin");
-        // }
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      console.log("No vin data found on this page!");
-    }
-    return "not_found";
+    return vin;
   }
 
   function getModelDataFromGlo3D(vin_number) {
-    console.log(36, vin_number);
     var data = { vin_number: vin_number, height: "400" };
     $.ajax({
       type: "POST",
@@ -88,7 +93,7 @@ jQuery(document).ready(function ($) {
         );
       },
     }).done(function (result) {
-      console.log("aResult", result);
+      console.log("sid", result.short_id);
       if (!result.short_id || result.privacy === "private") {
         return;
       }
