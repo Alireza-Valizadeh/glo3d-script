@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
   }
 
   function findVin() {
-    var vin = document.querySelector("t-vin").innerText;
+    var vin = document.querySelector(".t-vin").innerText;
     console.log("vin", vin);
     if (vin) {
       return vin;
