@@ -31,7 +31,7 @@ function Glo3dOpen360Image() {
   document.body.appendChild(div2);
 }
 function findVin() {
-  var vin = $(`span:contains("VIN#:")`)[0].nextSibling.nextSibling.innerText;
+  var vin = $(`span:contains("VIN:")`)[0].nextSibling.nextSibling.innerText;
   console.log("vin", vin);
   if (vin) {
     Glo3dGetModelData(vin);

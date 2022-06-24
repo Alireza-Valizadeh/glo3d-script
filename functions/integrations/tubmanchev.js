@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
   }
 
   function findVin() {
-    var vin = $(`span:contains("VIN#:")`)[0].nextSibling.nextSibling.innerText;
+    var vin = $(`span:contains("VIN:")`)[0].nextSibling.nextSibling.innerText;
     console.log("vin", vin);
     if (vin) {
       try {
