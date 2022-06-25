@@ -31,7 +31,16 @@ function Glo3dOpen360Image() {
   document.body.appendChild(div2);
 }
 function findVin() {
-  var vin = $(`span:contains("VIN:")`)[0].nextSibling.nextSibling.innerText;
+  var vins = document.querySelectorAll(".vehicleIds");
+  let popUpVehicleId = "";
+  vins = vins.forEach((e) => {
+    if (e.classList.length === 1) {
+      popUpVehicleId = e;
+    }
+  });
+  var popUpVehicleIdVinChild = Array.from(popUpVehicleId.children)[1];
+  var vinWrapperClose = Array.from(popUpVehicleIdVinChild.children)[1];
+  let vin = vinWrapperClose.innerText;
   console.log("vin", vin);
   if (vin) {
     Glo3dGetModelData(vin);
