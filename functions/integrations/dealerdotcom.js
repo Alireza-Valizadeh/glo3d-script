@@ -1,28 +1,22 @@
+// only a copy of the main script which is glo3d-cdn
 (async (APILoader) => {
   const API = await APILoader.create(document.currentScript || "glo3d");
   API.subscribe("vehicle-shown-v1", (ev) => {
     if (ev.payload.vin) {
       const vinNumber = ev.payload.vin;
       let shortId = "";
-      console.log("vinNumber", vinNumber);
+      API.log("vinNumber", vinNumber);
       var data = { vin_number: vinNumber, height: "400" };
       $.ajax({
         type: "POST",
         url: "https://us-central1-glo3d-c338b.cloudfunctions.net/vin",
         data: data,
         dataType: "json",
-        error: function (request, status, error) {
-          console.error(`Glo3D Javascript Status: ${status}`);
-          // possible errors are due to:
-          // 1) models have not been captured in Glo3D yet.
-          // 2) unexpected server errors.
-          console.error(
-            `Glo3D Javascript Error: ${request.responseJSON.message}`
-          );
+        error: function (request) {
+          API.log(`Glo3D Javascript Error: ${request.responseJSON.message}`);
         },
       }).done(function (result) {
-        console.log("Glo3D Result", result);
-        // Do not replace private models.
+        API.log("Glo3D Result", result);
         if (!result.short_id || result.privacy === "private") {
           return;
         }
