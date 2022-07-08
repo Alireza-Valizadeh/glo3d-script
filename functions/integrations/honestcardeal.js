@@ -38,10 +38,11 @@ jQuery(document).ready(function ($) {
     glo3dIFrame.classList.add("glo3d-iframe-height");
     glo3dIFrame.setAttribute("id", "glo3d-iframe-content");
     wrapper.appendChild(glo3dIFrame);
-    $(".main-img-frame").replaceWith(wrapper);
-    $(".pure-img.main-img").replaceWith(wrapper);
+    $(".inv-header.pics").replaceWith(wrapper);
+    document.querySelector(".main-pic").style.opacity = 0;
     try {
       $(".img-list").remove();
+
       $(".expand-bar").remove();
       $(".mobile-photo-msg").remove();
     } catch (error) {}
@@ -54,6 +55,8 @@ jQuery(document).ready(function ($) {
         justify-content: center;
         width: 100%;
         height: 100%;
+        margin-top: 180px;
+        margin-bottom: 50px;
       }
       .glo3d-iframe-height {
         height: 500px;
