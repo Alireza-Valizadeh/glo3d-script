@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
         height: 100%;
       }
       .glo3d-iframe-height {
-        height: 550px;
+        height: 650px;
         min-height: 400px;
         max-width: 675px;
       }
