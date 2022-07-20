@@ -68,6 +68,11 @@ jQuery(document).ready(function ($) {
           height: 300px;
         }
       }
+      @media (max-width: 550px) {
+        .main-pic {
+          display:none;
+        }
+    }
     </style>
     `
     );
