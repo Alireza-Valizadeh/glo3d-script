@@ -55,13 +55,13 @@ jQuery(document).ready(function ($) {
         justify-content: center;
         width: 100%;
         height: 100%;
-        margin-top: 180px;
-        margin-bottom: 50px;
+        margin-top: 170px;
+        margin-bottom: 10px;
       }
       .glo3d-iframe-height {
-        height: 500px;
+        height: 600px;
         min-height: 400px;
-        max-width: 600px;
+        max-width: 800px;
       }
       @media (max-width: 400px) {
         .glo3d-iframe-height {
