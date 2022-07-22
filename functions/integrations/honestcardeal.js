@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
       .glo3d-iframe-height {
         height: 600px;
         min-height: 400px;
-        max-width: 800px;
+        max-width: 665.5px;
       }
       @media (max-width: 400px) {
         .glo3d-iframe-height {
